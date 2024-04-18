@@ -1,0 +1,63 @@
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Clock</title>
+  <style>body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  
+  .clock {
+    width: 200px;
+    height: 200px;
+    border: 10px solid #333;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .time {
+    font-size: 2rem;
+    color: #333;
+  }
+  
+  /* Optional Animation */
+  @keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .clock {
+    animation: rotate 60s linear infinite;
+  }</style>
+</head>
+<body>
+  <div class="clock">
+    <div class="time" id="time"></div>
+  </div>
+  <script>function updateTime() {
+    const now = new Date();
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const seconds = String(now.getSeconds()).padStart(2, '0');
+    document.getElementById('time').textContent = `${hours}:${minutes}:${seconds}`;
+  }
+  setInterval(updateTime, 1000);
+  updateTime();
+  </script>
+</body>
+</html>
